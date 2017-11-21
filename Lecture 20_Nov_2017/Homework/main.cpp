@@ -1,4 +1,4 @@
-//#include "Header.h"
+#include "Header.h"
 #include<iostream>
 #include <string>
 #include <cstdint>
@@ -8,62 +8,65 @@ using namespace std;
  * Реализуйте функции-члены для ввода данных в переменные-члены, для выполнения арифметических операций
  * (сложение, вычитание, умножение, деление, и т.д.).
  */
+/*
 class Fraction{
 private:
-    int numerator;
-    int denominator;
-    int LCD(int x, int y)
+    int64_t numerator;
+    int64_t denominator;
+    int64_t LCD(int64_t x, int64_t y)
     {
         if (y == 0) return x;
         return LCD(y, x % y);
     }
 public:
-    void Input(int c, int z)
+ */
+    void Fraction::Input(int64_t c, int64_t z)
     {
         numerator = c;
         denominator = z;
     }
-    void Multiplication(int x)
+    void Fraction::Multiplication(int64_t x)
     {
         numerator *= x;
         cout << "Fraction:  " << numerator << '/' << denominator << endl;
     }
-    void Division(int x)
+    void Fraction::Division(int64_t x)
     {
         numerator *= x;
         cout << "Fraction: " << numerator << '/' << denominator << endl;
     }
-    void Addition(int x)
+    void Fraction::Addition(int64_t x)
     {
         numerator += (x*denominator);
         cout << "Fraction: " << numerator << '/' << denominator << endl;
     }
-    void Subtraction(int x)
+    void Fraction::Subtraction(int64_t x)
     {
         numerator -= (x*denominator);
         cout << "Fraction: " << numerator << '/' << denominator << endl;
     }
-    void Print()
+    void Fraction::Print()
     {
         cout <<numerator<<"/"<<denominator<<endl;
     }
-    int LCD()
+    int64_t Fraction::LCD()
     {
         return LCD(numerator, denominator);
     }
-    void Edit(int x)
+    void Fraction::Edit(int64_t x)
     {
         numerator /= x;
         denominator /= x;
     }
+/*
 };
-
+*/
 int main()
 {
     Fraction one{};
-    int n = 0;
-    int d = 0;
-    int m = 0;
+    int64_t n = 0;
+    int64_t d = 0;
+    int64_t m = 0;
     char c = 'y';
     cout << "Enter Numerator" << endl;
     cin >> n;
