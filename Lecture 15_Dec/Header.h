@@ -4,6 +4,7 @@
 template<typename T>
 class Array{
 public:
+    Array() = default;
     Array(size_t size, size_t grow);
     ~Array();
     size_t GetSize();
@@ -13,11 +14,15 @@ public:
     bool IsEmpty();
     void FreeExtra();
     void RemoveAll();
+    void operator= (Array<T> obj);
+    T operator[] (size_t array_index);
+    void SetAt(size_t array_index, T value);
+    T* GetData();
 
 private:
     size_t _size = 0;
     size_t _grow = 1;
-    size_t _counter = 0; //количество инициализированных элементов
+    size_t _counter = 0;
     T* _array = nullptr;
     void Memory_copy();
 };
@@ -105,5 +110,42 @@ void Array<T>::RemoveAll() {
     _counter = 0;
     _array = new T [_size];
 }
+
+template<typename T>
+T Array<T>::operator[](size_t array_index) {
+    if(array_index < _counter) {
+        return _array[array_index];
+    }
+    else{
+        return (_counter-1);
+    }
+}
+
+template<typename T>
+void Array<T>::SetAt(size_t array_index, T value) {
+    if(array_index < _counter) {
+        _array[array_index] = value;
+    }
+    else{
+        std::cout<<"Last index is: "<<(_counter-1)<< std::endl;
+        ;
+    }
+}
+
+template<typename T>
+T* Array<T>::GetData() {
+    return _array;
+}
+
+template<typename T>
+void Array<T>::operator= (Array<T> obj) {
+    _array = new T [obj._size];
+    memcpy(_array, obj._array, sizeof(T)*(obj._size));
+    _counter = obj._counter;
+    _size = obj._size;
+    _grow = obj._grow;
+}
+
+
 
 
