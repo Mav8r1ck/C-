@@ -36,7 +36,7 @@ void testqueue(){
     std::cout<<Q3[1]<<std::endl;
     std::cout<<Q3[2]<<std::endl;
     std::cout<<Q3[3]<<std::endl;
-    Q3.Remove(7);
+    std::cout<<"This data removed: "<<Q3.Remove(7)<<std::endl;
     std::cout<<Q3[6]<<std::endl;
     std::cout<<Q3.Count()<<std::endl;
 }

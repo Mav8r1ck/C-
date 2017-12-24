@@ -176,9 +176,11 @@ void Queue<T>::Insert(size_t index, T &&data) {
 
 template<typename T>
 T Queue<T>::Remove(size_t index) {
+    T temp_data;
     QueueItem* temp = _head;
     if(index == 1){
         _head = temp->next;
+        temp_data = temp->data;
         delete temp;
     }
     else{
@@ -189,13 +191,16 @@ T Queue<T>::Remove(size_t index) {
         if(index == Count()){
             temp->next = nullptr;
             _tail = temp;
+            temp_data = delete_item->data;
             delete delete_item;
         }
         else {
             temp->next = temp->next->next;
+            temp_data = delete_item->data;
             delete delete_item;
         }
     }
+    return std::move(temp_data);
 }
 
 
