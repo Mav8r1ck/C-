@@ -5,7 +5,7 @@
 class NullptrException : public std::exception{
 public:
     NullptrException(char const* message);
-    const char* what() const override;
+    const char* what() const _GLIBCXX_USE_NOEXCEPT override;
 private:
     const char* _message;
 };
@@ -15,7 +15,7 @@ private:
 class NotFindException : public std::exception{
 public:
     NotFindException(char const* message);
-    const char* what() const override;
+    const char* what() const _GLIBCXX_USE_NOEXCEPT override;
 private:
     const char* _message;
 };
@@ -177,6 +177,7 @@ void BTree<Key, Value>::EditValue(Key &key, Value&& new_value) {
     while (true){
         if (temp->_key == key){
             temp->_value = std::move(new_value);
+            return;
         }
         else if(key < temp->_key){
             temp = temp->_left;
